@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>دال سين | نظام تشغيل أعمال متكامل</title>
+    <meta
+      name="description"
+      content="الموقع الرسمي لشركة دال سين: Retail, Pay, Flow, Dine لإدارة المبيعات والمدفوعات والمخزون والفرق الميدانية والمطاعم."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-elevated="false">
+      <a class="brand" href="index.html" aria-label="دال سين">
+        <img src="assets/logo-wide.png" alt="شعار دال سين" />
+      </a>
+      <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" aria-label="القائمة الرئيسية">
+        <a href="index.html">الرئيسية</a><a href="about.html">من نحن</a>
+        <a href="products.html">المنتجات</a>
+        <a href="sectors.html">القطاعات</a>
+        <a href="articles.html">المقالات</a>
+        <a href="contact.html">تواصل معنا</a>
+      </nav>
+      <a class="header-admin" href="admin.html">لوحة التحكم</a>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-background" aria-hidden="true">
+          <img id="hero-image" src="assets/logo-stack.png" alt="" />
+          <div class="signal-grid"></div>
+        </div>
+        <div class="hero-shell">
+          <div class="hero-copy">
+            <p class="eyebrow" id="hero-eyebrow"></p>
+            <h1 id="hero-title"></h1>
+            <p class="hero-lead" id="hero-lead"></p>
+            <div class="hero-actions">
+              <a class="btn primary" href="contact.html" id="hero-primary"></a>
+              <a class="btn ghost" href="products.html" id="hero-secondary"></a>
+            </div>
+            <div class="trust-row" id="proof-list"></div>
+          </div>
+
+          <aside class="operations-console" aria-label="ملخص منظومة دال سين">
+            <div class="console-top">
+              <span>Live Operating Console</span>
+              <strong>99.9%</strong>
+            </div>
+            <div class="console-map">
+              <span class="route route-a"></span>
+              <span class="route route-b"></span>
+              <span class="route route-c"></span>
+              <span class="node node-retail">Retail</span>
+              <span class="node node-pay">Pay</span>
+              <span class="node node-flow">Flow</span>
+              <span class="node node-dine">Dine</span>
+            </div>
+            <div class="console-bottom">
+              <div>
+                <small>Invoices</small>
+                <strong class="count-up" data-value="+250M">+250M</strong>
+              </div>
+              <div>
+                <small>SoftPOS</small>
+                <strong class="count-up" data-value="+24M">+24M</strong>
+              </div>
+              <div>
+                <small>Clients</small>
+                <strong class="count-up" data-value="+700">+700</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="مؤشرات الثقة">
+        <div class="metric-track" id="metrics-track"></div>
+      </section>
+
+      <section class="section accreditations-section" id="accreditations">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">GOVERNMENT ACCREDITATIONS</span>
+            <h2>معتمدون ومرتبطون مع الجهات الحكومية</h2>
+          </div>
+          <p>نلتزم بمتطلبات الجهات التنظيمية في المملكة ونوفر تجربة تشغيل متوافقة للمدفوعات والفوترة الإلكترونية.</p>
+        </div>
+        <div class="accreditations-panel">
+          <img id="accreditations-image" src="assets/government-accreditations.png" alt="شعارات البنك المركزي السعودي وهيئة الزكاة والضريبة والجمارك" />
+        </div>
+      </section>
+
+      <section class="section split-section" id="about">
+        <div class="section-kicker">ABOUT DALSEEN</div>
+        <div class="split-content">
+          <div>
+            <h2>منصة واحدة تربط تشغيلك التجاري من البيع إلى التحصيل.</h2>
+          </div>
+          <div>
+            <p>
+              دال سين تجمع نظام الكاشير، المدفوعات، المخزون، فرق التوزيع، الأسطول، وعمليات المطاعم داخل منظومة واحدة تعمل في الوقت الحقيقي.
+              بنيت المنصة لتناسب بيئة الأعمال في المملكة، مع امتثال تنظيمي وتجربة تشغيل قابلة للتوسع.
+            </p>
+            <div class="about-points">
+              <span>سحابي</span>
+              <span>متعدد الأجهزة</span>
+              <span>متوافق</span>
+              <span>مدعوم بالذكاء</span>
+            </div>
+          </div>
+          <img class="about-visual" id="about-image" src="assets/products-sheet.png" alt="منظومة منتجات دال سين" />
+        </div>
+      </section>
+
+      <section class="section products-section" id="products">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">THE FOUR MODULES</span>
+            <h2>منتجات دال سين</h2>
+          </div>
+          <p>أربع وحدات مترابطة تغطي التجزئة، الدفع، التوزيع الميداني، والمطاعم.</p>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+      </section>
+
+      <section class="section why-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">WHY DALSEEN</span>
+            <h2>لماذا تختار دال سين؟</h2>
+          </div>
+          <p>منظومة تشغيل تساعد الإدارة على رؤية العمل، ضبط التكلفة، وتوسيع النشاط بثقة.</p>
+        </div>
+        <div class="why-grid" id="why-grid"></div>
+      </section>
+
+      <section class="section sectors-section" id="sectors">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">WHO WE SERVE</span>
+            <h2>قطاعات نخدمها</h2>
+          </div>
+        </div>
+        <div class="sector-cloud" id="sector-cloud"></div>
+      </section>
+
+    
+
+      <section class="section insights-section" id="insights">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">INSIGHTS</span>
+            <h2>مدونة دال سين</h2>
+          </div>
+          <p>مقالات تقنية وتشغيلية حول أنظمة البيع والمدفوعات والتوزيع والمطاعم.</p>
+        </div>
+        <div class="content-grid" id="articles-grid"></div>
+        <div class="section-more">
+          <a class="btn ghost" href="articles.html">عرض كل المقالات</a>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="site-cta"></section>
+
+      <section class="section contact-section" id="contact">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <span class="section-kicker">GET STARTED</span>
+            <h2>جاهز لتشغيل عملك على دال سين؟</h2>
+            <p>فريق دال سين يساعدك في اختيار الوحدة المناسبة، تفعيل الاشتراك، وربط التشغيل حسب احتياج منشأتك.</p>
+            <div class="contact-methods">
+              <a id="contact-email" href="#"></a>
+              <a id="contact-phone" href="#"></a>
+              <span id="contact-city"></span>
+            </div>
+          </div>
+          <form class="lead-form" id="lead-form">
+            <label>
+              الاسم
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>
+              المنشأة
+              <input name="company" autocomplete="organization" required />
+            </label>
+            <label>
+              رقم التواصل
+              <input name="phone" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="05[0-9]{8}" title="أدخل رقم جوال سعودي مكون من 10 أرقام ويبدأ بـ 05" required />
+            </label>
+            <label>
+              المنتج المطلوب
+              <select name="product" required>
+                <option>DALSEEN Retail</option>
+                <option>DALSEEN Pay</option>
+                <option>DALSEEN Flow</option>
+                <option>DALSEEN Dine</option>
+                <option>منظومة متكاملة</option>
+              </select>
+            </label>
+            <button class="btn primary" type="submit">إرسال الطلب</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-logo"><img src="assets/logo-wide.png" alt="دال سين" /></span>
+      <p>© 2026 دال سين. منصة تشغيل أعمال متكاملة للسوق السعودي.</p>
+      <nav class="footer-links" aria-label="روابط مهمة"></nav>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
