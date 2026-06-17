@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>لوحة تحكم دال سين</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="admin-body">
+    <header class="admin-header">
+      <a class="brand admin-brand" href="index.html" aria-label="دال سين">
+        <img src="assets/logo-wide.png" alt="شعار دال سين" />
+      </a>
+      <div class="admin-header-actions">
+        <a class="btn ghost" href="index.html">معاينة الموقع</a>
+      </div>
+    </header>
+
+    <main class="admin-layout">
+      <aside class="admin-sidebar">
+        <p class="eyebrow">DALSEEN CMS</p>
+        <h1>لوحة التحكم</h1>
+        <div class="admin-tabs" role="tablist" aria-label="أقسام لوحة التحكم">
+          <button class="tab-button" type="button" data-tab="home">الرئيسية</button>
+          <button class="tab-button" type="button" data-tab="products">المنتجات</button>
+          <button class="tab-button active" type="button" data-tab="pages">الصفحات</button>
+          <button class="tab-button" type="button" data-tab="articles">المقالات</button>
+          <button class="tab-button" type="button" data-tab="leads">المسجلين</button>
+          <button class="tab-button" type="button" data-tab="settings">الإعدادات</button>
+        </div>
+        <div class="admin-summary" id="admin-summary"></div>
+      </aside>
+
+      <section class="admin-panel active" id="panel-pages">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">PAGES</span>
+            <h2>إدارة الصفحات</h2>
+          </div>
+          <button class="btn primary" type="button" id="new-page">صفحة جديدة</button>
+        </div>
+        <div class="admin-content">
+          <div class="items-list" id="pages-list"></div>
+          <form class="editor-form" id="page-form">
+            <input type="hidden" name="id" />
+            <label>
+              العنوان
+              <input name="title" required />
+            </label>
+            <label>
+              الرابط المختصر
+              <input name="slug" required />
+            </label>
+            <label>
+              الحالة
+              <select name="status">
+                <option value="published">منشور</option>
+                <option value="draft">مسودة</option>
+              </select>
+            </label>
+            <label>
+              الملخص
+              <textarea name="excerpt" rows="3" required></textarea>
+            </label>
+            <label>
+              المحتوى
+              <textarea name="content" rows="8" required data-rich-editor></textarea>
+            </label>
+            <div class="section-builder">
+              <div class="panel-heading compact">
+                <div>
+                  <span class="section-kicker">PAGE BUILDER</span>
+                  <h3>أقسام الصفحة</h3>
+                </div>
+                <div class="builder-add">
+                  <select id="section-template" aria-label="نوع القسم الجديد">
+                    <option value="" selected>اختر نوع القسم المطلوب</option>
+                    <option value="hero">القسم الرئيسي Hero</option>
+                    <option value="productsSolutions">المنتجات والحلول</option>
+                    <option value="features">المميزات أو الخدمات</option>
+                    <option value="problemSolution">المشكلة والحل</option>
+                    <option value="steps">آلية العمل</option>
+                    <option value="gallery">معرض أعمال أو أمثلة</option>
+                    <option value="testimonials">آراء العملاء</option>
+                    <option value="stats">الأرقام والإحصائيات</option>
+                    <option value="pricing">الباقات أو الأسعار</option>
+                    <option value="faq">الأسئلة الشائعة</option>
+                    <option value="finalCta">دعوة أخيرة للإجراء</option>
+                    <option value="footerInfo">معلومات التذييل</option>
+                    <option value="imageText">صورة مع نص</option>
+                    <option value="text">نص منسق</option>
+                    <option value="cards">مربعات معلومات</option>
+                  </select>
+                  <button class="btn ghost" type="button" id="add-page-section">إضافة قسم</button>
+                </div>
+              </div>
+              <div class="page-sections-list" id="page-sections-list"></div>
+              <input type="hidden" name="sectionsJson" />
+            </div>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">حفظ الصفحة</button>
+              <button class="btn danger" type="button" id="delete-page">حذف</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-products">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">PRODUCTS</span>
+            <h2>إدارة المنتجات</h2>
+          </div>
+          <a class="btn ghost" href="products.html" target="_blank" rel="noopener">معاينة المنتجات</a>
+        </div>
+        <div class="admin-content">
+          <div class="items-list" id="products-list"></div>
+          <form class="editor-form product-editor-form" id="product-form">
+            <input type="hidden" name="id" />
+            <div class="form-block product-editor-hero">
+              <div>
+                <h3>بيانات البطاقة</h3>
+                <p class="muted-note">هذه البيانات تظهر في صفحة المنتجات والصفحة الخاصة بكل منتج.</p>
+              </div>
+              <img class="image-preview product-admin-preview" id="product-image-preview" alt="" hidden />
+            </div>
+            <div class="form-block">
+              <h3>معلومات المنتج</h3>
+              <div class="field-row">
+                <label>اسم المنتج بالإنجليزية<input name="name" required /></label>
+                <label>اسم المنتج بالعربية<input name="arabicName" required /></label>
+              </div>
+              <div class="field-row">
+                <label>لون البطاقة
+                  <select name="tone">
+                    <option value="green">أخضر</option>
+                    <option value="gold">ذهبي</option>
+                    <option value="blue">أزرق</option>
+                    <option value="orange">برتقالي</option>
+                  </select>
+                </label>
+              </div>
+              <label>العنوان المختصر<textarea name="headline" rows="3" required></textarea></label>
+              <label>وصف صفحة المنتج<textarea name="summary" rows="4" required></textarea></label>
+            </div>
+            <div class="form-block">
+              <h3>صورة المنتج</h3>
+              <div class="field-row">
+                <label>رابط الصورة أو المسار
+                  <small>المقاس المقترح: 1200×800px أو نسبة 3:2</small>
+                  <input name="image" placeholder="assets/product-retail.png" />
+                </label>
+                <label class="file-field">رفع صورة المنتج
+                  <input id="product-image-file" type="file" accept="image/*" />
+                  <small>المقاس المقترح: 1200×800px - نسبة 3:2 - حجم الملف حتى 600KB - PNG أو JPG</small>
+                </label>
+              </div>
+            </div>
+            <div class="form-block">
+              <h3>المزايا والاستخدامات</h3>
+              <label>المزايا الرئيسية
+                <small>كل ميزة في سطر مستقل</small>
+                <textarea name="featuresText" rows="7"></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">حفظ المنتج</button>
+              <button class="btn ghost" type="button" id="reset-product">استعادة الافتراضي</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-home">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">HOME PAGE</span>
+            <h2>محتوى الصفحة الرئيسية</h2>
+          </div>
+        </div>
+        <div class="admin-content single-column">
+          <form class="editor-form settings-form" id="home-form">
+            <div class="form-block">
+              <h3>القسم الرئيسي</h3>
+              <label>السطر التعريفي أعلى العنوان<input name="eyebrow" /></label>
+              <label>عنوان الصفحة الرئيسية<input name="heroTitle" /></label>
+              <label>النص الرئيسي<textarea name="heroLead" rows="4"></textarea></label>
+              <div class="field-row">
+                <label>نص زر التسجيل<input name="primaryAction" /></label>
+                <label>رابط زر جرب الآن<input name="ctaTrialUrl" /></label>
+              </div>
+              <div class="field-row">
+                <label>صورة خلفية الهيرو <small>المقاس المقترح: 900×700px PNG شفاف أو WebP</small>
+                  <input name="heroImage" placeholder="assets/logo-stack.png" />
+                </label>
+                <label class="file-field">رفع صورة الهيرو
+                  <input id="home-hero-image-file" type="file" accept="image/*" />
+                  <small>المقاس المقترح: 1600×900px - نسبة 16:9 - حجم الملف حتى 900KB - PNG أو JPG</small>
+                </label>
+              </div>
+              <label>وصف صورة الهيرو<input name="heroImageAlt" /></label>
+              <div class="field-row">
+                <label>الشارات أعلى الصفحة
+                  <textarea name="proofList" rows="4" placeholder="كل شارة في سطر"></textarea>
+                </label>
+                <label>مؤشرات شاشة التشغيل
+                  <textarea name="consoleStats" rows="4" placeholder="العنوان | الرقم"></textarea>
+                </label>
+              </div>
+              <div class="field-row">
+                <label>عنوان شاشة التشغيل<input name="consoleTitle" /></label>
+                <label>نسبة التوفر<input name="consoleAvailability" /></label>
+              </div>
+              <label>أرقام شريط الثقة
+                <textarea name="metrics" rows="4" placeholder="الرقم | الوصف"></textarea>
+              </label>
+            </div>
+
+            <div class="form-block">
+              <h3>إظهار وإخفاء الأقسام</h3>
+              <div class="field-row home-visibility-grid">
+                <label>شريط الأرقام<select name="showMetrics"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>الاعتمادات الحكومية<select name="showAccreditations"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>نبذة الشركة<select name="showAbout"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>المنتجات<select name="showProducts"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>لماذا دال سين<select name="showWhy"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>القطاعات<select name="showSectors"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>صفحات الشركة<select name="showPages"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>المقالات<select name="showArticles"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>CTA<select name="showCta"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+                <label>التواصل<select name="showContact"><option value="true">ظاهر</option><option value="false">مخفي</option></select></label>
+              </div>
+            </div>
+
+            <div class="form-block">
+              <h3>الاعتمادات الحكومية</h3>
+              <div class="field-row">
+                <label>العنوان الصغير<input name="accreditationsKicker" /></label>
+                <label>العنوان الرئيسي<input name="accreditationsTitle" /></label>
+              </div>
+              <label>النص<textarea name="accreditationsText" rows="3"></textarea></label>
+              <div class="field-row">
+                <label>صورة الاعتمادات
+                  <small>المقاس المقترح: 1400×260px PNG شفاف</small>
+                  <input name="accreditationsImage" placeholder="assets/government-accreditations.png" />
+                </label>
+                <label class="file-field">رفع صورة الاعتمادات
+                  <input id="home-accreditations-image-file" type="file" accept="image/*" />
+                  <small>المقاس المقترح: 1400×360px - صورة أفقية واضحة - حجم الملف حتى 350KB - PNG مفضل</small>
+                </label>
+              </div>
+              <label>وصف صورة الاعتمادات<input name="accreditationsImageAlt" /></label>
+            </div>
+
+            <div class="form-block">
+              <h3>نبذة الشركة</h3>
+              <div class="field-row">
+                <label>العنوان الصغير<input name="aboutKicker" /></label>
+                <label>العنوان الرئيسي<input name="aboutTitle" /></label>
+              </div>
+              <label>النص<textarea name="aboutText" rows="4"></textarea></label>
+              <label>النقاط المختصرة<textarea name="aboutPoints" rows="3" placeholder="كل نقطة في سطر"></textarea></label>
+              <div class="field-row">
+                <label>صورة نبذة الشركة <small>المقاس المقترح: 1200×800px أو نسبة 3:2</small>
+                  <input name="aboutImage" placeholder="assets/products-sheet.png" />
+                </label>
+                <label class="file-field">رفع صورة النبذة
+                  <input id="home-about-image-file" type="file" accept="image/*" />
+                  <small>المقاس المقترح: 1200×800px - نسبة 3:2 - حجم الملف حتى 700KB - PNG أو JPG</small>
+                </label>
+              </div>
+              <label>وصف صورة النبذة<input name="aboutImageAlt" /></label>
+            </div>
+
+            <div class="form-block">
+              <h3>عناوين أقسام الصفحة</h3>
+              <div class="field-row">
+                <label>عنوان المنتجات الصغير<input name="productsKicker" /></label>
+                <label>عنوان المنتجات<input name="productsTitle" /></label>
+              </div>
+              <label>وصف المنتجات<textarea name="productsText" rows="2"></textarea></label>
+              <div class="field-row">
+                <label>عنوان لماذا الصغير<input name="whyKicker" /></label>
+                <label>عنوان لماذا<input name="whyTitle" /></label>
+              </div>
+              <label>وصف لماذا<textarea name="whyText" rows="2"></textarea></label>
+              <label>عناصر لماذا دال سين<textarea name="whyItems" rows="6" placeholder="العنوان | النص"></textarea></label>
+              <div class="field-row">
+                <label>عنوان القطاعات الصغير<input name="sectorsKicker" /></label>
+                <label>عنوان القطاعات<input name="sectorsTitle" /></label>
+              </div>
+              <label>وصف القطاعات<textarea name="sectorsText" rows="2"></textarea></label>
+              <div class="field-row">
+                <label>عنوان الصفحات الصغير<input name="pagesKicker" /></label>
+                <label>عنوان الصفحات<input name="pagesTitle" /></label>
+              </div>
+              <label>وصف الصفحات<textarea name="pagesText" rows="2"></textarea></label>
+              <div class="field-row">
+                <label>عنوان المقالات الصغير<input name="articlesKicker" /></label>
+                <label>عنوان المقالات<input name="articlesTitle" /></label>
+              </div>
+              <label>وصف المقالات<textarea name="articlesText" rows="2"></textarea></label>
+            </div>
+
+            <div class="form-block">
+              <h3>قسم التواصل والتذييل</h3>
+              <label>عنوان CTA<input name="ctaTitle" /></label>
+              <label>نص CTA<textarea name="ctaText" rows="3"></textarea></label>
+              <div class="field-row">
+                <label>عنوان التواصل الصغير<input name="contactKicker" /></label>
+                <label>عنوان التواصل<input name="contactTitle" /></label>
+              </div>
+              <label>نص التواصل<textarea name="contactText" rows="3"></textarea></label>
+              <label>نص التذييل<input name="footerText" /></label>
+              <label>روابط التذييل <small>الصيغة: اسم الرابط | الرابط | true للإظهار أو false للإخفاء</small>
+                <textarea name="footerLinks" rows="6" placeholder="الأسئلة الشائعة | page.html?slug=faq | true"></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">حفظ الرئيسية</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-articles">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">ARTICLES</span>
+            <h2>إدارة المقالات</h2>
+          </div>
+          <button class="btn primary" type="button" id="new-article">مقال جديد</button>
+        </div>
+        <div class="admin-content">
+          <div class="items-list" id="articles-list"></div>
+          <form class="editor-form" id="article-form">
+            <input type="hidden" name="id" />
+            <label>
+              العنوان
+              <input name="title" required />
+            </label>
+            <label>
+              الرابط المختصر
+              <input name="slug" required />
+            </label>
+            <label>
+              صورة المقال
+              <input name="image" placeholder="assets/product-retail.png أو رابط صورة" />
+            </label>
+            <label class="file-field">
+              رفع صورة من الجهاز
+              <input id="article-image-file" type="file" accept="image/*" />
+              <small>المقاس المقترح: 1200×675px - نسبة 16:9 - حجم الملف حتى 500KB - PNG أو JPG</small>
+            </label>
+            <img class="image-preview" id="article-image-preview" alt="" />
+            <div class="field-row">
+              <label>
+                التصنيف
+                <input name="tag" required />
+              </label>
+              <label>
+                تاريخ النشر
+                <input name="date" type="date" required />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                وقت القراءة
+                <input name="readTime" required />
+              </label>
+              <label>
+                الحالة
+                <select name="status">
+                  <option value="published">منشور</option>
+                  <option value="draft">مسودة</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              الملخص
+              <textarea name="excerpt" rows="3" required></textarea>
+            </label>
+            <label>
+              المحتوى
+              <textarea name="content" rows="8" required data-rich-editor></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">حفظ المقال</button>
+              <button class="btn danger" type="button" id="delete-article">حذف</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-leads">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">REGISTRATIONS</span>
+            <h2>جدول المسجلين</h2>
+          </div>
+          <div class="form-actions">
+            <button class="btn ghost" type="button" id="export-leads">تصدير Excel</button>
+            <button class="btn danger" type="button" id="clear-leads">مسح الجدول</button>
+          </div>
+        </div>
+        <div class="leads-table-wrap">
+          <table class="leads-table" id="leads-table">
+            <thead>
+              <tr>
+                <th>التاريخ</th>
+                <th>الاسم</th>
+                <th>المنشأة</th>
+                <th>رقم التواصل</th>
+                <th>المنتج</th>
+                <th>المصدر</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-settings">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">SETTINGS</span>
+            <h2>إعدادات الموقع</h2>
+          </div>
+        </div>
+        <div class="admin-content single-column">
+          <form class="editor-form settings-form" id="settings-form">
+            <label>
+              عنوان الصفحة الرئيسية
+              <input name="heroTitle" required />
+            </label>
+            <label>
+              النص الرئيسي
+              <textarea name="heroLead" rows="5" required></textarea>
+            </label>
+            <div class="field-row">
+              <label>
+                البريد الإلكتروني
+                <input name="email" type="email" required />
+              </label>
+              <label>
+                رقم التواصل
+                <input name="phone" required />
+              </label>
+            </div>
+            <label>
+              المدينة
+              <input name="city" required />
+            </label>
+            <label>
+              عنوان CTA
+              <input name="ctaTitle" required />
+            </label>
+            <label>
+              نص CTA
+              <textarea name="ctaText" rows="3" required></textarea>
+            </label>
+            <div class="field-row">
+              <label>
+                زر CTA الرئيسي
+                <input name="ctaPrimaryLabel" value="سجل الآن" readonly />
+              </label>
+              <label>
+                زر CTA الثانوي
+                <input name="ctaSecondaryLabel" value="جرب الآن" readonly />
+              </label>
+            </div>
+            <label>
+              رابط زر جرب الآن
+              <input name="ctaTrialUrl" placeholder="trial.html أو https://example.com/demo" required />
+            </label>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">حفظ الإعدادات</button>
+              <button class="btn ghost" type="button" id="export-json">تصدير JSON</button>
+              <label class="btn ghost import-button">
+                استيراد JSON
+                <input id="import-json" type="file" accept="application/json" />
+              </label>
+              <button class="btn danger" type="button" id="reset-content">استعادة الافتراضي</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
